@@ -24,6 +24,25 @@ body {
   border-radius: 5px;
 }
 
+.tab-list-container {
+  margin-top: 15px;
+  display: flex;
+}
+
+.tab {
+  padding: 5px 8px;
+  border-radius: 5px;
+  margin-right: 8px;
+  background-color: #EBEBEB;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: black;
+  color: white;
+}
+
 .todo-list-container {
   margin-top: 25px;
 }

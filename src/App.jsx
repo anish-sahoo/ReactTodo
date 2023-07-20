@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TodoList from './TodoList';
+import TabList from './TabList';
 import './stylesheets/App.css';
 
 const App = () => {
@@ -34,6 +35,8 @@ const App = () => {
         className="textbox"
         onKeyPress={(e) => handleEnterPress(e)}
       />
+
+      <TabList />
 
       {todoList.length > 0 ? (
         <TodoList todoList={todoList} handleTodoClick={handleTodoClick} />
