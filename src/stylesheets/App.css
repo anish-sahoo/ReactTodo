@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  background-color: aquamarine;
+}
+
+.container {
+  width: 500px;
+  margin: 20px auto;
+  background-color: #fff;
+  min-height: calc(100vh - 40px);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.header {
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+.textbox {
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.todo-list-container {
+  margin-top: 25px;
+}
+
+.todo {
+  padding: 10px;
+  border: solid 1px black;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background-color: #EBEBEB;
+}
