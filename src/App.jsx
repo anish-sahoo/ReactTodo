@@ -21,8 +21,6 @@ const App = () => {
       todo.done = !todo.done;
       setTodoList([...todoList]);
     }
-
-    console.log("todoList", todoList);
   }
 
   return (
@@ -37,7 +35,14 @@ const App = () => {
         onKeyPress={(e) => handleEnterPress(e)}
       />
 
-      <TodoList todoList={todoList} handleTodoClick={handleTodoClick} />
+      {todoList.length > 0 ? (
+        <TodoList todoList={todoList} handleTodoClick={handleTodoClick} />
+      ) : (
+        <div className="blank-well">
+          No todo found
+        </div>
+      )}
+
     </div>
   );
 }
