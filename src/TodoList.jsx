@@ -1,10 +1,10 @@
 import React from 'react';
 import Todo from './Todo';
 
-const TodoList = ({ todoList }) => {
+const TodoList = ({ todoList, handleTodoClick }) => {
   return (
     <div className="todo-list-container">
-      {todoList.map((todo, index) => <Todo key={index} todo={todo} />)}
+      {todoList.map(todo => <Todo key={todo.index} todo={todo} handleTodoClick={handleTodoClick} />)}
     </div>
   );
 }

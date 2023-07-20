@@ -7,7 +7,7 @@ body {
   width: 500px;
   margin: 20px auto;
   background-color: #fff;
-  min-height: calc(100vh - 40px);
+  min-height: calc(100vh - 80px);
   border-radius: 5px;
   padding: 20px;
 }
@@ -33,5 +33,14 @@ body {
   border: solid 1px black;
   border-radius: 5px;
   margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.todo-done {
+  text-decoration: line-through;
+  background-color: #b0b0b0;
+}
+
+.todo-undone {
   background-color: #EBEBEB;
 }

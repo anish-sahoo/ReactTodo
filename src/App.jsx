@@ -8,9 +8,21 @@ const App = () => {
 
   const handleEnterPress = (e) => {
     if (e.key === 'Enter') {
-      setTodoList([text, ...todoList]);
+      const lastIndex = todoList[0]?.index || 0;
+      setTodoList([{ index: lastIndex + 1, text: text, done: false }, ...todoList]);
       setText('');
     }
+  }
+
+  const handleTodoClick = (index) => {
+    const todo = todoList.find(el => el.index === index);
+
+    if (todo) {
+      todo.done = !todo.done;
+      setTodoList([...todoList]);
+    }
+
+    console.log("todoList", todoList);
   }
 
   return (
@@ -25,7 +37,7 @@ const App = () => {
         onKeyPress={(e) => handleEnterPress(e)}
       />
 
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} handleTodoClick={handleTodoClick} />
     </div>
   );
 }
