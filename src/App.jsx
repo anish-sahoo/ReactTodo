@@ -10,8 +10,10 @@ const App = () => {
   const handleEnterPress = (e) => {
     if (e.key === 'Enter') {
       const lastIndex = todoList[0]?.index || 0;
-      setTodoList([{ index: lastIndex + 1, text: text, done: false }, ...todoList]);
-      setText('');
+      if(text.trim() !== "") {
+        setTodoList([{ index: lastIndex + 1, text: text, done: false }, ...todoList]);
+        setText('');
+      }
     }
   }
 
@@ -27,8 +29,8 @@ const App = () => {
   }
 
   const handleDeleteClick = (index) => {
-    console.log(`Element ${todoList[index-1]} at ${index-1} removed.`);
-    todoList.splice(index-1, 1);
+    console.log(`Element ${todoList[index]} at ${index} removed.`);
+    todoList.splice(index, 1);
     setTodoList([...todoList]);
   }
 
