@@ -53,6 +53,22 @@ body {
   border-radius: 5px;
   margin-bottom: 5px;
   cursor: pointer;
+  width: 440px;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.todo-delete {
+  padding: 10px;
+  border: solid 1px black;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .todo-done {
