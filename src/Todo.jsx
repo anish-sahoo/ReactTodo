@@ -5,7 +5,7 @@ const Todo = ({ todo, handleTodoClick, handleDeleteClick }) => {
     <div className='todo-container'>
       <div
         className={`todo ${todo.done ? "todo-done" : "todo-undone"}`} 
-        onClick={() => handleTodoClick(todo.index)}>{todo.text}
+        onClick={() => handleTodoClick(todo.index)}>{todo.text}{todo.index}
       </div>
       <button className='todo-delete' onClick={() => handleDeleteClick(todo.index)}>X</button>
     </div>

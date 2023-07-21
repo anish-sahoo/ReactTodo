@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import TodoList from './TodoList';
 import TabList from './TabList';
 import './stylesheets/App.css';
-import { render } from 'react-dom';
 
 const App = () => {
   const [todoList, setTodoList] = useState([]);
@@ -30,7 +29,7 @@ const App = () => {
   const handleDeleteClick = (index) => {
     console.log(`Element ${todoList[index-1]} at ${index-1} removed.`);
     todoList.splice(index-1, 1);
-    //setTodoList([...todoList]);
+    setTodoList([...todoList]);
   }
 
   return (
