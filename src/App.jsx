@@ -5,7 +5,13 @@ import './stylesheets/App.css';
 
 const App = () => {
   const [todoList, setTodoList] = useState([]);
+  const [displayTodoList, setDisplayList] = useState([]);
   const [text, setText] = useState('');
+  
+  const tabs_list = [ {text:'all', enabled:true}, 
+                      {text:'undone', enabled:false}, 
+                      {text:'done', enabled:false} ]
+  const [tabList, setTabList] = useState(tabs_list);
 
   const handleEnterPress = (e) => {
     if (e.key === 'Enter') {
@@ -34,6 +40,17 @@ const App = () => {
     );
   }
 
+  const handleTabSelect = (value) => {
+    const tab = tabList.find(el => el.text === value);
+    console.log(tab);
+    if(tab.enabled){
+
+    }
+    else {
+
+    }
+  }
+
   return (
     <div className="container">
       <h1 className="header">My Todo List</h1>
@@ -46,7 +63,7 @@ const App = () => {
         onKeyPress={(e) => handleEnterPress(e)}
       />
 
-      <TabList/>
+      <TabList handleClick={handleTabSelect}/>
 
       {todoList.length > 0 ? (
         <TodoList todoList={todoList} handleTodoClick={handleTodoClick} handleDeleteClick={handleDeleteClick} />
