@@ -11,6 +11,7 @@ const App = () => {
   const tabs_list = [ {text:'all', enabled:true}, 
                       {text:'undone', enabled:false}, 
                       {text:'done', enabled:false} ]
+                      
   const [tabList, setTabList] = useState(tabs_list);
 
   const handleEnterPress = (e) => {
@@ -20,6 +21,7 @@ const App = () => {
         setTodoList([{ index: lastIndex + 1, text: text, done: false }, ...todoList]);
         setText('');
         setDisplayList([...todoList]);
+        console.log(displayTodoList);
       }
     }
   }
@@ -42,10 +44,10 @@ const App = () => {
   }
 
   const populateList = (tabName) => {
-    if(tabName == 'Done'){
+    if(tabName === 'Done'){
 
     }
-    else if(tabName == 'Undone'){
+    else if(tabName === 'Undone'){
 
     }
     else {
@@ -57,7 +59,7 @@ const App = () => {
     const tab = tabList.find(item => item.text === value);
     
     if(!tab.enabled){
-      tabList.map(item => (item.text == tab.text) ? item.enabled = true : item.enabled = false);
+      tabList.map(item => (item.text === tab.text) ? item.enabled = true : item.enabled = false);
       setTabList([...tabList]);
       populateList(tab.text);
     }
