@@ -41,13 +41,11 @@ const App = () => {
   }
 
   const handleTabSelect = (value) => {
-    const tab = tabList.find(el => el.text === value);
-    console.log(tab);
-    if(tab.enabled){
-
-    }
-    else {
-
+    const tab = tabList.find(item => item.text === value);
+    console.log(tabList);
+    if(!tab.enabled){
+      tabList.map(item => (item.text == tab.text) ? item.enabled = true : item.enabled = false);
+      setTabList([...tabList]);
     }
   }
 
@@ -63,7 +61,7 @@ const App = () => {
         onKeyPress={(e) => handleEnterPress(e)}
       />
 
-      <TabList handleClick={handleTabSelect}/>
+      <TabList tabList={tabList} handleClick={handleTabSelect}/>
 
       {todoList.length > 0 ? (
         <TodoList todoList={todoList} handleTodoClick={handleTodoClick} handleDeleteClick={handleDeleteClick} />

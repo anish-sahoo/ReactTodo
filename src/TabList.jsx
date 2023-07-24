@@ -6,8 +6,8 @@ const TabList = ({tabList, handleClick}) => {
   
   return (
     <div className="tab-list-container">
-      {tabs.map(tab => <Tab 
-        key={tabs.indexOf(tab)} 
+      {tabList.map(tab => <Tab 
+        key={tab.text} 
         value={tab.text}
         enabled={tab.enabled}
         handleClick={handleClick} />)}
