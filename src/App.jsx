@@ -19,6 +19,7 @@ const App = () => {
       if(text.trim().length > 0) {
         setTodoList([{ index: lastIndex + 1, text: text, done: false }, ...todoList]);
         setText('');
+        setDisplayList([...todoList]);
       }
     }
   }
@@ -40,12 +41,25 @@ const App = () => {
     );
   }
 
+  const populateList = (tabName) => {
+    if(tabName == 'Done'){
+
+    }
+    else if(tabName == 'Undone'){
+
+    }
+    else {
+      
+    }
+  }
+
   const handleTabSelect = (value) => {
     const tab = tabList.find(item => item.text === value);
-    console.log(tabList);
+    
     if(!tab.enabled){
       tabList.map(item => (item.text == tab.text) ? item.enabled = true : item.enabled = false);
       setTabList([...tabList]);
+      populateList(tab.text);
     }
   }
 
