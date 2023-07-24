@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: aquamarine;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .container {
@@ -63,12 +64,19 @@ body {
 
 .todo-delete {
   padding: 10px;
-  border: solid 1px black;
+  border: solid 1px rgb(160, 45, 45);
+  background-color: rgb(255, 197, 197);
+  color: rgb(160, 45, 45);
+  transition: all 0.5s ease-in-out;
   border-radius: 5px;
   margin-bottom: 5px;
   margin-left: 5px;
   cursor: pointer;
   font-size: 16px;
+}
+
+.todo-delete:hover {
+  background-color: rgb(221, 156, 156);
 }
 
 .todo-done {
