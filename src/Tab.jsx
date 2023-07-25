@@ -2,9 +2,11 @@ import React from 'react';
 
 const Tab = ({ value, enabled, handleClick }) => {
   return (
-    <span 
+    <span
       className={`tab ${enabled == true ? "active" : ""}`}
-      onClick={() => handleClick(value)}>{value}
+      onClick={() => handleClick(value)}
+    >
+      {value}
     </span>
   );
 }

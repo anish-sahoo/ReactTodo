@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoList from './TodoList';
 import TabList from './TabList';
 import './stylesheets/App.css';
 
 const App = () => {
   const [todoList, setTodoList] = useState([]);
-  const [displayTodoList, setDisplayList] = useState([]);
   const [text, setText] = useState('');
-  
-  const tabs_list = [ {text:'all', enabled:true}, 
-                      {text:'undone', enabled:false}, 
-                      {text:'done', enabled:false} ]
-                      
-  const [tabList, setTabList] = useState(tabs_list);
+  const [selectedTab, setSelectedTab] = useState('all');
+  const [displayTodoList, setDisplayList] = useState([]);
+
+  useEffect(() => {
+    if (selectedTab === 'done') {
+      setDisplayList(todoList.filter(el => el.done));
+    } else if (selectedTab === 'undone') {
+      setDisplayList(todoList.filter(el => !el.done));
+    } else {
+      setDisplayList([...todoList]);
+    }
+  }, [selectedTab, todoList]);
 
   const handleEnterPress = (e) => {
     if (e.key === 'Enter') {
@@ -20,8 +25,6 @@ const App = () => {
       if(text.trim().length > 0) {
         setTodoList([{ index: lastIndex + 1, text: text, done: false }, ...todoList]);
         setText('');
-        setDisplayList([...todoList]);
-        console.log(displayTodoList);
       }
     }
   }
@@ -43,28 +46,6 @@ const App = () => {
     );
   }
 
-  const populateList = (tabName) => {
-    if(tabName === 'Done'){
-
-    }
-    else if(tabName === 'Undone'){
-
-    }
-    else {
-      
-    }
-  }
-
-  const handleTabSelect = (value) => {
-    const tab = tabList.find(item => item.text === value);
-    
-    if(!tab.enabled){
-      tabList.map(item => (item.text === tab.text) ? item.enabled = true : item.enabled = false);
-      setTabList([...tabList]);
-      populateList(tab.text);
-    }
-  }
-
   return (
     <div className="container">
       <h1 className="header">My Todo List</h1>
@@ -77,11 +58,17 @@ const App = () => {
         onKeyPress={(e) => handleEnterPress(e)}
       />
 
-      <TabList tabList={tabList} handleClick={handleTabSelect}/>
+      <TabList selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
 
-      {todoList.length > 0 ? (
-        <TodoList todoList={todoList} handleTodoClick={handleTodoClick} handleDeleteClick={handleDeleteClick} />
-      ) : ( <div className="blank-well">No todo found</div> )}
+      {displayTodoList.length > 0 ? (
+        <TodoList
+          todoList={displayTodoList}
+          handleTodoClick={handleTodoClick}
+          handleDeleteClick={handleDeleteClick}
+        />
+      ) : (
+        <div className="blank-well">No todo found</div>
+      )}
     </div>
   );
 }

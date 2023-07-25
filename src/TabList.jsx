@@ -1,16 +1,16 @@
 import React from 'react';
 import Tab from './Tab';
 
-const TabList = ({tabList, handleClick}) => {
-  const tabs = [{text:'all', enabled:true}, {text:'undone', enabled:false}, {text:'done', enabled:false}];
-  
+const TabList = ({ selectedTab, setSelectedTab }) => {
+  const TAB_LIST = ['all', 'undone', 'done']
+
   return (
     <div className="tab-list-container">
-      {tabList.map(tab => <Tab 
-        key={tab.text} 
-        value={tab.text}
-        enabled={tab.enabled}
-        handleClick={handleClick} />)}
+      {TAB_LIST.map(tabName => <Tab
+        key={tabName}
+        value={tabName}
+        enabled={tabName === selectedTab}
+        handleClick={setSelectedTab} />)}
     </div>
   );
 }
