@@ -2,12 +2,19 @@ import React, { useState, useEffect } from 'react';
 import TodoList from './TodoList';
 import TabList from './TabList';
 import './stylesheets/App.css';
+import Confetti from 'react-confetti';
 
 const App = () => {
   const [todoList, setTodoList] = useState([]);
   const [text, setText] = useState('');
   const [selectedTab, setSelectedTab] = useState('all');
   const [displayTodoList, setDisplayList] = useState([]);
+  const [confetti, setConfetti] = useState(false);
+
+  const handleConfetti = () => {
+    setConfetti(true);
+    setTimeout(() => setConfetti(false), 6000);
+  };
 
   useEffect(() => {
     if (selectedTab === 'done') {
@@ -32,6 +39,7 @@ const App = () => {
   const handleTodoClick = (index) => {
     const todo = todoList.find(el => el.index === index);
     if(todoList.every(element => element.done === true)){
+      handleConfetti();
       console.log('Add confetti here');
     }
     if (todo) {
@@ -49,7 +57,7 @@ const App = () => {
   return (
     <div className="container">
       <h1 className="header">My Todo List</h1>
-
+      <div className='confetti'>{confetti && <Confetti width={window.innerWidth} height={window.innerHeight} wind={0.02}/>}</div>
       <input
         placeholder="Enter your text here..."
         value={text}
